@@ -1,7 +1,7 @@
 import React from "react";
-import Cards from "../../components/ui/Cards";
-import Chart from "../../components/ui/chart";
-import MostLiked from "../../components/ui/mostlikedPost";
+import Cards from "../components/ui/Cards";
+import Chart from "../components/ui/chart";
+import MostLiked from "../components/ui/mostlikedPost";
 
 const Admin = () => {
   return (

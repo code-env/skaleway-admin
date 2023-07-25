@@ -8,24 +8,24 @@ export const useSidebarRoutes = () => {
         {
           name: "Dashboard",
           icon: LayoutGrid,
-          path: "/admin",
+          path: "/",
         },
         {
           name: "Create",
           icon: PenSquare,
-          path: "/admin/create",
+          path: "/create",
         },
         {
           name: "Messages",
           icon: MessageCircle,
-          path: "/admin/messages",
+          path: "/messages",
         },
       ],
       [
         {
           name: "Settings",
           icon: Settings,
-          path: "/admin/settings",
+          path: "/settings",
         },
       ],
     ],

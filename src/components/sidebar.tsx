@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="h-screen w-64 flex flex-col gap-8 bg-primary p-5 sticky top-0">
+    <div className="h-screen w-64 flex flex-col gap-8 bg-primary p-5 sticky top-0 bg-black">
       Skaleway
       <div className=" flex-1 w-full justify-between flex flex-col">
         {sidebarRoutes.map((r, index) => (

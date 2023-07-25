@@ -3,7 +3,7 @@
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import React, { useState, useEffect, FormEvent } from "react";
-import { BiTrash, BiImageAdd } from "react-icons/bi";
+import { Trash, ImagePlus } from "lucide-react";
 
 interface imageUploaderProps {
   disabled?: boolean;
@@ -45,7 +45,7 @@ const ImageUpload: React.FC<imageUploaderProps> = ({
                 onClick={() => onRemove(url)}
                 className="bg-rose-500 cursor-pointer p-2 rounded-md text-white"
               >
-                <BiTrash />
+                <Trash />
               </button>
             </div>
             <Image fill alt="text" src={url} className="object-cover" />
@@ -65,7 +65,7 @@ const ImageUpload: React.FC<imageUploaderProps> = ({
               onClick={onClick}
               className="flex bg-gray-300 items-center gap-2 p-2 rounded-md"
             >
-              <BiImageAdd size={20} />
+              <ImagePlus size={20} />
               <span>Upload an image</span>
             </button>
           );
