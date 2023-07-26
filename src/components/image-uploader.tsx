@@ -35,22 +35,26 @@ const ImageUpload: React.FC<imageUploaderProps> = ({
   return (
     <div>
       <div className="flex mb-4 gap-4 items-center">
-        {value.map((url) => (
-          <div
-            key={url}
-            className="rounded-md w-[200px] h-[200px] overflow-hidden relative"
-          >
-            <div className="absolute top-2 right-2 z-10">
-              <button
-                onClick={() => onRemove(url)}
-                className="bg-rose-500 cursor-pointer p-2 rounded-md text-white"
-              >
-                <Trash />
-              </button>
+        {value.map((url) => {
+          console.log(url);
+
+          return (
+            <div
+              key={url}
+              className="rounded-md w-[200px] h-[200px] overflow-hidden relative"
+            >
+              <div className="absolute top-2 right-2 z-10">
+                <button
+                  onClick={() => onRemove(url)}
+                  className="bg-rose-500 cursor-pointer p-2 rounded-md text-white"
+                >
+                  <Trash />
+                </button>
+              </div>
+              <Image fill alt="text" src={url} className="object-cover" />
             </div>
-            <Image fill alt="text" src={url} className="object-cover" />
-          </div>
-        ))}
+          );
+        })}
       </div>
       <CldUploadWidget onUpload={onUpload} uploadPreset="skaleway">
         {({ open }) => {

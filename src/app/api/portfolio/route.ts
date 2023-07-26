@@ -13,11 +13,11 @@ export async function POST(request: Request) {
         status: 401,
       });
 
-    const { title, image, desc } = body;
+    const { title, image, description } = body;
 
     const portfolio = await prismadb.portfolio.create({
       data: {
-        description: desc,
+        description: description,
         imageUrl: image,
         userId,
         title,
