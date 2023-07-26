@@ -1,11 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+interface RootProps {
+  children: React.ReactNode;
+}
+
+const AuthLayout: FC<RootProps> = ({ children }: RootProps) => {
   return (
-    <div className="fixed top-0 left-0 w-full z-50 min-h-screen items-center justify-center backdrop-blur-sm bg-white/5">
+    <div className="fixed top-0 left-0 w-full z-50 min-h-screen items-center justify-center backdrop-blur-sm bg-white/5 flex">
       {children}
     </div>
   );
 };
 
-export default layout;
+export default AuthLayout;

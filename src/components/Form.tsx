@@ -7,11 +7,7 @@ interface formProps extends HtmlHTMLAttributes<HTMLFormElement> {
 }
 
 const Form: React.FC<formProps> = ({ children, ...props }) => {
-  return (
-    <form className="flex-1 flex flex-col gap-[10px]" {...props}>
-      {children}
-    </form>
-  );
+  return <form {...props}>{children}</form>;
 };
 
 export default Form;

@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Input from "@/components/Input";
-import Form from "@/components/Form";
 import { toast } from "sonner";
 import ImageUpload from "@/components/image-uploader";
 
@@ -83,39 +82,40 @@ const CreateForm = () => {
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      className="lg:w-1/2 mx-auto md:w-[80%] w-[90%] p-4 rounded-lg flex flex-col gap-4"
-    >
-      <Input
-        name="title"
-        onChange={handleChange}
-        value={title}
-        placeholder="Title"
-        disabled={isLoading}
-      />
-      <ImageUpload
-        onChange={handleImageChange}
-        onRemove={handleImageRemove}
-        value={image ? [image] : []}
-        disabled={isLoading}
-      />
-      <Input
-        name="description"
-        onChange={handleChange}
-        value={description}
-        placeholder="Description"
-        textarea
-        disabled={isLoading}
-      />
-
-      <button
-        className="px-12 py-2 rounded-md bg-secondary text-white"
-        disabled={isLoading}
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="lg:w-1/2 mx-auto md:w-[80%] w-[90%] p-4 rounded-lg flex flex-col gap-4"
       >
-        Upload Portfolio
-      </button>
-    </Form>
+        <Input
+          name="title"
+          onChange={handleChange}
+          value={title}
+          placeholder="Title"
+          disabled={isLoading}
+        />
+        <ImageUpload
+          onChange={handleImageChange}
+          onRemove={handleImageRemove}
+          value={image ? [image] : []}
+          disabled={isLoading}
+        />
+        <Input
+          name="description"
+          onChange={handleChange}
+          value={description}
+          placeholder="Description"
+          textarea
+          disabled={isLoading}
+        />
+        <button
+          className="px-12 py-2 rounded-md bg-secondary text-white"
+          disabled={isLoading}
+        >
+          Upload Portfolio
+        </button>
+      </form>
+    </>
   );
 };
 
