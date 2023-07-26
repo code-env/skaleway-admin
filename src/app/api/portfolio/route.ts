@@ -9,11 +9,17 @@ export async function POST(request: Request) {
     const { userId } = auth();
 
     if (!userId)
-      return new NextResponse("don't try to do that", {
+      return new NextResponse("Nigga you're unauthorized", {
         status: 401,
       });
 
     const { title, image, description } = body;
+
+    if (!title || !image || !description) {
+      return new NextResponse("This fields are required nigga", {
+        status: 400,
+      });
+    }
 
     const portfolio = await prismadb.portfolio.create({
       data: {
@@ -25,8 +31,9 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(portfolio);
-  } catch (error) {
+  } catch (error: any) {
     console.log("Creating portfolio Error");
+    console.log(error.message);
     return new NextResponse("Internal server ERoor", {
       status: 500,
     });
