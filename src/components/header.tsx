@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <Bell size={20} className="cursor-pointer hover:text-black" /> {"|"}
       <div className="userProfile flex items-center gap-2 text-black">
-        <UserButton />
+        <UserButton afterSignOutUrl="/sign-in" />
       </div>
     </div>
   );
