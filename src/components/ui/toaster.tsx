@@ -8,8 +8,8 @@ export function Toaster() {
       position="bottom-right"
       toastOptions={{
         style: {
-          background: "var(--color-orange)",
-          color: "var(--color-neutral)",
+          background: "white",
+          color: "black",
           border: "1px solid hsl(var(--border))",
         },
       }}
