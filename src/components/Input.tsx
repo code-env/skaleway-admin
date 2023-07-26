@@ -28,6 +28,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           name={name}
           onChange={onChange}
+          value={value}
           className={`${
             disabled && "cursor-not-allowed"
           } w-full border outline-none px-4 py-3 rounded focus:border-primary resize-none transition-all h-[150px] duration-300`}

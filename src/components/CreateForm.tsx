@@ -66,9 +66,9 @@ const CreateForm = () => {
         toast.success("Successfully uploaded portfolio");
 
         setUserData({
+          image: null,
           title: "",
           description: "",
-          image: null,
         });
       } else {
         toast.error("Error uploading portfolio:");
