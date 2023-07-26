@@ -17,6 +17,9 @@ model Portfolio {
   imageUrl    String
   userId      String
   description String
+  variant     String
+  githubLink  String?
+  demoLink    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

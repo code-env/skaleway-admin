@@ -13,7 +13,7 @@ export async function POST(request: Request) {
         status: 401,
       });
 
-    const { title, image, description } = body;
+    const { title, image, description, variant } = body;
 
     if (!title || !image || !description) {
       return new NextResponse("This fields are required nigga", {
@@ -27,6 +27,7 @@ export async function POST(request: Request) {
         imageUrl: image,
         userId,
         title,
+        variant,
       },
     });
 

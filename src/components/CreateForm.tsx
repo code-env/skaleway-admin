@@ -10,7 +10,7 @@ interface post {
   image?: string | null;
   title: string;
   description: string;
-  type: string;
+  variant: string;
   githubLink?: string;
   demoLink?: string;
 }
@@ -18,15 +18,15 @@ interface post {
 export type Variant = "Graphic Design" | "UI/UX Design" | "Web Development";
 
 const CreateForm = () => {
+  const [typeVariant, setTypeVariant] = useState<Variant>("Graphic Design");
+
   const [userData, setUserData] = useState<post>({
     title: "",
     description: "",
-    type: "",
+    variant: "",
     githubLink: "",
     demoLink: "",
   });
-
-  const [typeVariant, setTypeVariant] = useState<Variant>("Graphic Design");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -41,7 +41,7 @@ const CreateForm = () => {
     }));
   };
 
-  const { title, image, description, githubLink, demoLink } = userData;
+  const { title, image, description, githubLink, demoLink, variant } = userData;
 
   const handleImageChange = (imageUrl: string) => {
     setUserData((prev) => ({
@@ -57,8 +57,19 @@ const CreateForm = () => {
     }));
   };
 
+  const handleChangeVariant = (variant: Variant) => {
+    setTypeVariant(variant);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setUserData((prev) => ({
+      ...prev,
+      variant: typeVariant,
+    }));
+
+    return console.log(userData);
 
     try {
       setIsLoading(true);
@@ -79,7 +90,7 @@ const CreateForm = () => {
           image: null,
           title: "",
           description: "",
-          type: "",
+          variant: typeVariant,
         });
       } else {
         toast.error("Error uploading portfolio:");
@@ -90,10 +101,6 @@ const CreateForm = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleChangeVariant = (variant: Variant) => {
-    setTypeVariant(variant);
   };
 
   return (
