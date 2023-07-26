@@ -4,6 +4,7 @@ import Sidebar from "../components/sidebar";
 import Header from "../components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 import "@/styles/globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 interface ReactNode {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ const AdminLayout = ({ children }: ReactNode) => {
   return (
     <ClerkProvider>
       <html lang="en">
+        <Toaster />
         <body>
           <div className="flex w-full font-sans">
             <Sidebar />
