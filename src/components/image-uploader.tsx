@@ -65,7 +65,7 @@ const ImageUpload: React.FC<imageUploaderProps> = ({
             <button
               disabled={disabled}
               onClick={onClick}
-              className="flex bg-gray-300 items-center gap-2 p-2 rounded-md"
+              className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
               <ImagePlus size={20} />
               <span>Upload an image</span>

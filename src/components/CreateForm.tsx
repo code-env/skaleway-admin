@@ -4,19 +4,29 @@ import React, { useState } from "react";
 import Input from "@/components/Input";
 import { toast } from "sonner";
 import ImageUpload from "@/components/image-uploader";
+import Dropdown from "./ui/Dropdown";
 
 interface post {
   image?: string | null;
   title: string;
   description: string;
+  type: string;
+  githubLink?: string;
+  demoLink?: string;
 }
+
+export type Variant = "Graphic Design" | "UI/UX Design" | "Web Development";
 
 const CreateForm = () => {
   const [userData, setUserData] = useState<post>({
     title: "",
-    image: null,
     description: "",
+    type: "",
+    githubLink: "",
+    demoLink: "",
   });
+
+  const [typeVariant, setTypeVariant] = useState<Variant>("Graphic Design");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -31,7 +41,7 @@ const CreateForm = () => {
     }));
   };
 
-  const { title, image, description } = userData;
+  const { title, image, description, githubLink, demoLink } = userData;
 
   const handleImageChange = (imageUrl: string) => {
     setUserData((prev) => ({
@@ -69,6 +79,7 @@ const CreateForm = () => {
           image: null,
           title: "",
           description: "",
+          type: "",
         });
       } else {
         toast.error("Error uploading portfolio:");
@@ -79,6 +90,10 @@ const CreateForm = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleChangeVariant = (variant: Variant) => {
+    setTypeVariant(variant);
   };
 
   return (
@@ -94,12 +109,33 @@ const CreateForm = () => {
           placeholder="Title"
           disabled={isLoading}
         />
-        <ImageUpload
-          onChange={handleImageChange}
-          onRemove={handleImageRemove}
-          value={image ? [image] : []}
-          disabled={isLoading}
-        />
+        <div className="w-full flex gap-4 items-center">
+          <ImageUpload
+            onChange={handleImageChange}
+            onRemove={handleImageRemove}
+            value={image ? [image] : []}
+            disabled={isLoading}
+          />
+          <Dropdown onClick={handleChangeVariant} variant={typeVariant} />
+        </div>
+        {typeVariant === "Web Development" && (
+          <div className="flex items-center gap-4">
+            <Input
+              name="githubLink"
+              value={githubLink!}
+              onChange={handleChange}
+              placeholder="Github repo Link"
+              disabled={isLoading}
+            />
+            <Input
+              name="demoLink"
+              value={demoLink!}
+              onChange={handleChange}
+              placeholder="Product demo link"
+              disabled={isLoading}
+            />
+          </div>
+        )}
         <Input
           name="description"
           onChange={handleChange}
