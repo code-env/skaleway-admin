@@ -89,6 +89,8 @@ const CreateForm = () => {
           title: "",
           description: "",
           variant: typeVariant,
+          demoLink: "",
+          githubLink: "",
         });
       } else {
         toast.error("Error uploading portfolio:");
