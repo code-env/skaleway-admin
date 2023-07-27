@@ -74,7 +74,7 @@ const CreateForm = () => {
     try {
       setIsLoading(true);
 
-      return console.log(userData);
+      // return console.log(userData);
 
       const response = await fetch("/api/portfolio", {
         method: "POST",
