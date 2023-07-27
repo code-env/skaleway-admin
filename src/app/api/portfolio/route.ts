@@ -29,19 +29,33 @@ export async function POST(request: Request) {
       }
     }
 
-    const portfolio = await prismadb.portfolio.create({
-      data: {
-        description: description,
-        imageUrl: image,
-        userId,
-        title,
-        variant,
-        githubLink,
-        demoLink,
-      },
-    });
+    if (variant === "Web Development") {
+      const portfolio = await prismadb.portfolio.create({
+        data: {
+          description: description,
+          imageUrl: image,
+          userId,
+          title,
+          variant,
+          githubLink,
+          demoLink,
+        },
+      });
 
-    return NextResponse.json(portfolio);
+      return NextResponse.json(portfolio);
+    } else {
+      const portfolio = await prismadb.portfolio.create({
+        data: {
+          description: description,
+          imageUrl: image,
+          userId,
+          title,
+          variant,
+        },
+      });
+
+      return NextResponse.json(portfolio);
+    }
   } catch (error: any) {
     console.log("Creating portfolio Error");
     console.log(error.message);
@@ -60,9 +74,11 @@ export async function GET() {
     });
 
     return NextResponse.json(post);
-  } catch (error) {
+  } catch (error: any) {
     console.log("getting portfolio Error");
-    return new NextResponse("Internal server ERoor", {
+    console.log(error.message);
+
+    return new NextResponse("Internal server Error", {
       status: 500,
     });
   }
