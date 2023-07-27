@@ -23,7 +23,7 @@ const CreateForm = () => {
   const [userData, setUserData] = useState<post>({
     title: "",
     description: "",
-    variant: "",
+    variant: typeVariant,
     githubLink: "",
     demoLink: "",
   });
@@ -41,7 +41,7 @@ const CreateForm = () => {
     }));
   };
 
-  const { title, image, description, githubLink, demoLink, variant } = userData;
+  const { title, image, description, githubLink, demoLink } = userData;
 
   const handleImageChange = (imageUrl: string) => {
     setUserData((prev) => ({
@@ -68,8 +68,6 @@ const CreateForm = () => {
       ...prev,
       variant: typeVariant,
     }));
-
-    return console.log(userData);
 
     try {
       setIsLoading(true);
