@@ -13,12 +13,20 @@ export async function POST(request: Request) {
         status: 401,
       });
 
-    const { title, image, description, variant } = body;
+    const { title, image, description, variant, githubLink, demoLink } = body;
 
     if (!title || !image || !description) {
       return new NextResponse("This fields are required nigga", {
         status: 400,
       });
+    }
+
+    if (variant === "Web Development") {
+      if (!githubLink || !demoLink) {
+        return new NextResponse("This fields are required nigga", {
+          status: 400,
+        });
+      }
     }
 
     const portfolio = await prismadb.portfolio.create({
@@ -28,6 +36,8 @@ export async function POST(request: Request) {
         userId,
         title,
         variant,
+        githubLink,
+        demoLink,
       },
     });
 
