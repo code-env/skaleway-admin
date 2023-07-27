@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "@/components/Input";
 import { toast } from "sonner";
 import ImageUpload from "@/components/image-uploader";
@@ -61,16 +61,20 @@ const CreateForm = () => {
     setTypeVariant(variant);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  useEffect(() => {
     setUserData((prev) => ({
       ...prev,
       variant: typeVariant,
     }));
+  }, [typeVariant]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     try {
       setIsLoading(true);
+
+      return console.log(userData);
 
       const response = await fetch("/api/portfolio", {
         method: "POST",
