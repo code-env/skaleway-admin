@@ -85,19 +85,30 @@ const CreateForm = () => {
       });
 
       // Handle the response from the server
+      const requestBody = {
+        image: null,
+        title: "",
+        description: "",
+        variant: typeVariant,
+        demoLink: "",
+        githubLink: "",
+      };
       if (response.ok) {
         toast.success("Successfully uploaded portfolio");
 
-        setUserData({
-          image: null,
-          title: "",
-          description: "",
-          variant: typeVariant,
-          demoLink: "",
-          githubLink: "",
-        });
+        setUserData(requestBody);
       } else {
-        toast.error("Error uploading portfolio:");
+        const checkBody: any = { ...requestBody };
+        if (typeVariant === "Graphic Design" || typeVariant === "UI/UX Design") {
+          delete checkBody["demoLink"];
+          delete checkBody["githubLink"];
+        }
+
+        for (let key of Object.keys(checkBody)) {
+          if (!Boolean(checkBody[key])) {
+            toast.error(`${key} is required`);
+          }
+        }
       }
     } catch (error) {
       toast.error("Something went wrong while uploading");
