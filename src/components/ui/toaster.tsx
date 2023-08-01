@@ -13,6 +13,7 @@ export function Toaster() {
           border: "1px solid hsl(var(--border))",
         },
       }}
+      visibleToasts={6}
     />
   );
 }
